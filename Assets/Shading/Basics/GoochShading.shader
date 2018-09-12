@@ -16,8 +16,8 @@
 			#pragma fragment frag
 			
 			#include "UnityCG.cginc"
-			
-            const float3 lightPos = float3(18,18,45);
+		
+		    uniform float3 _LightPos;
             
 			struct appdata
 			{
@@ -49,6 +49,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
+                
 			    fixed4 colSurface = tex2D(_MainTex, i.uv);
 			
 				float3 colCool = float3 (0,0,0.55) + 0.25 * colSurface.xyz;
@@ -58,7 +59,7 @@
 				
 				float3 viewDirection = normalize(_WorldSpaceCameraPos - i.worldPos);
 				float3 normalDirection = normalize(i.worldNormal);
-				float3 lightDirection = normalize(lightPos - i.worldPos);
+				float3 lightDirection = normalize(_LightPos - i.worldPos);
 				
 				float t = (dot(normalDirection, lightDirection) + 1) / 2;
 				float3 r = 2 * (dot(normalDirection, lightDirection)) * normalDirection - lightDirection;
