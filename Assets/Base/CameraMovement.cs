@@ -47,7 +47,7 @@ public class CameraMovement : MonoBehaviour
 
     private void UpdateCursorLock()
     {
-        //if the user set "lockCursor" we check & properly lock the cursos
+        //if the user set "lockCursor" we check & properly lock the cursors
         if (_LockCursor)
             InternalLockUpdate();
     }
